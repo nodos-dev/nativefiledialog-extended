@@ -394,7 +394,7 @@ nfdresult_t NFD_OpenDialogN_With_Impl(nfdversion_t version,
     }
 
     // Only show file system items
-    if (!AddOptions(fileOpenDialog, ::FOS_FORCEFILESYSTEM)) {
+    if (!AddOptions(fileOpenDialog, ::FOS_FORCEFILESYSTEM | ::FOS_NOCHANGEDIR)) {
         return NFD_ERROR;
     }
 
@@ -478,7 +478,8 @@ nfdresult_t NFD_OpenDialogMultipleN_With_Impl(nfdversion_t version,
     }
 
     // Set a flag for multiple options and file system items only
-    if (!AddOptions(fileOpenDialog, ::FOS_FORCEFILESYSTEM | ::FOS_ALLOWMULTISELECT)) {
+    if (!AddOptions(fileOpenDialog,
+                    ::FOS_FORCEFILESYSTEM | ::FOS_ALLOWMULTISELECT | ::FOS_NOCHANGEDIR)) {
         return NFD_ERROR;
     }
 
@@ -561,7 +562,7 @@ nfdresult_t NFD_SaveDialogN_With_Impl(nfdversion_t version,
     }
 
     // Only show file system items
-    if (!AddOptions(fileSaveDialog, ::FOS_FORCEFILESYSTEM)) {
+    if (!AddOptions(fileSaveDialog, ::FOS_FORCEFILESYSTEM | ::FOS_NOCHANGEDIR)) {
         return NFD_ERROR;
     }
 
@@ -627,7 +628,8 @@ nfdresult_t NFD_PickFolderN_With_Impl(nfdversion_t version,
     }
 
     // Only show items that are folders and on the file system
-    if (!AddOptions(fileOpenDialog, ::FOS_FORCEFILESYSTEM | ::FOS_PICKFOLDERS)) {
+    if (!AddOptions(fileOpenDialog,
+                    ::FOS_FORCEFILESYSTEM | ::FOS_PICKFOLDERS | ::FOS_NOCHANGEDIR)) {
         return NFD_ERROR;
     }
 
@@ -694,7 +696,8 @@ nfdresult_t NFD_PickFolderMultipleN_With_Impl(nfdversion_t version,
 
     // Allow multiple selection; only show items that are folders and on the file system
     if (!AddOptions(fileOpenDialog,
-                    ::FOS_FORCEFILESYSTEM | ::FOS_PICKFOLDERS | ::FOS_ALLOWMULTISELECT)) {
+                    ::FOS_FORCEFILESYSTEM | ::FOS_PICKFOLDERS | ::FOS_ALLOWMULTISELECT |
+                        ::FOS_NOCHANGEDIR)) {
         return NFD_ERROR;
     }
 
